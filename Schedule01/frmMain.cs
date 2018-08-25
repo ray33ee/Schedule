@@ -19,9 +19,34 @@ namespace Schedule01
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            tmeTima.Format = DateTimePickerFormat.Custom;
-            tmeTima.CustomFormat = "HH:MM";
-            tmeTima.ShowUpDown = true;
+            
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmSlotDialog dial = new frmSlotDialog(0, 0, 0);
+            dial.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
