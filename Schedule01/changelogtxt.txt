@@ -1,4 +1,7 @@
-﻿Version 1.0.1
+﻿Version 1.0.2
+	- Staged important stuff for git
+
+Version 1.0.1
 	- Basic GUI created
 	- Dialog validation complete, dialog will not close with invalid data
 
