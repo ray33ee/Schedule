@@ -1,4 +1,4 @@
-﻿namespace Schedule01
+﻿namespace Schedule
 {
     partial class frmMain
     {

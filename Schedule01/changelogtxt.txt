@@ -1,4 +1,8 @@
-﻿Version 1.0.2
+﻿Version 1.0.3
+	- State changed to MinuteState and dialog combo changed to check boxes to accomodate any permutation of states
+	- Basic parse skeleton implemented
+
+Version 1.0.2
 	- Staged important stuff for git
 
 Version 1.0.1

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Schedule01.Properties
+namespace Schedule.Properties
 {
 
 

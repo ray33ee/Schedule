@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="State.cs" />
     <Compile Include="frmSlotDialog.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Schedule01
+namespace Schedule
 {
     public partial class frmSlotDialog : Form
     {
         private int _start;
         private int _finish;
-        private int _state;
+        private MinuteState _state;
 
         public int Start
         {
@@ -28,18 +28,17 @@ namespace Schedule01
 
         }
 
-        public int State
+        public MinuteState State
         {
             get => _state;
-
         }
 
-        public frmSlotDialog() : this(0, 1, 0)
+        public frmSlotDialog() : this(0, 1, new MinuteState('\0'))
         {
             
         }
 
-        public frmSlotDialog(int start_time, int finish_time, int state) 
+        public frmSlotDialog(int start_time, int finish_time, MinuteState state) 
         {
             this._start = start_time;
             this._finish = finish_time;
@@ -64,8 +63,11 @@ namespace Schedule01
             tmeFinish.Value = zero.AddHours(_finish / 60).AddMinutes(_finish % 60);
 
             //Initialise combo box with start values
-            cboState.SelectedIndex = _state;
-            
+            cbxHW.Checked = _state.HW;
+            cbxCH.Checked = _state.CH;
+            cbxWF.Checked = _state.WF;
+            cbxIH.Checked = _state.IH;
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -80,16 +82,11 @@ namespace Schedule01
                 return;
             }
 
-            if (cboState.SelectedIndex == -1)
-            {
-                MessageBox.Show("Invalid Slot - Invalid state " + cboState.Text + ".", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
             //Copy valid entries
             _start = start;
             _finish = finish;
-            _start = cboState.SelectedIndex;
+
+            _state = new MinuteState(Convert.ToInt32(cbxHW.Checked), Convert.ToInt32(cbxCH.Checked), Convert.ToInt32(cbxWF.Checked), Convert.ToInt32(cbxIH.Checked));
 
             //Dialog OK
             DialogResult = DialogResult.OK;
