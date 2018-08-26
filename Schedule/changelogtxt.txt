@@ -1,4 +1,9 @@
-﻿Version 1.0.4
+﻿Version 1.0.5
+	- Weekday choice moved from main form to dialog
+	- Dialog now contains a 'Slot' class 
+	- Edit, delete and add buttons complete
+
+Version 1.0.4
 	- Project renamed from Schedule01 to Schedule
 	- Added Slot class and modified State class. Both classes override ToString() for use with list box widget.
 	- State bug fixed (the bit select algorithm was negating the result. i.e. (Value & 1) == 0 was changed to (Value & 1) != 0)

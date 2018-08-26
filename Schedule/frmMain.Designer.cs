@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tmeTima = new System.Windows.Forms.DateTimePicker();
-            this.cboWeekday = new System.Windows.Forms.ComboBox();
             this.lstSlots = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -38,37 +36,12 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // tmeTima
-            // 
-            this.tmeTima.CustomFormat = "hh/ss";
-            this.tmeTima.Location = new System.Drawing.Point(140, 12);
-            this.tmeTima.Name = "tmeTima";
-            this.tmeTima.Size = new System.Drawing.Size(200, 20);
-            this.tmeTima.TabIndex = 0;
-            this.tmeTima.Value = new System.DateTime(2018, 8, 25, 13, 48, 59, 0);
-            // 
-            // cboWeekday
-            // 
-            this.cboWeekday.FormattingEnabled = true;
-            this.cboWeekday.Items.AddRange(new object[] {
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wedneday",
-            "Thursday",
-            "Friday",
-            "Saturday"});
-            this.cboWeekday.Location = new System.Drawing.Point(13, 10);
-            this.cboWeekday.Name = "cboWeekday";
-            this.cboWeekday.Size = new System.Drawing.Size(121, 21);
-            this.cboWeekday.TabIndex = 1;
-            // 
             // lstSlots
             // 
             this.lstSlots.FormattingEnabled = true;
-            this.lstSlots.Location = new System.Drawing.Point(13, 38);
+            this.lstSlots.Location = new System.Drawing.Point(13, 12);
             this.lstSlots.Name = "lstSlots";
-            this.lstSlots.Size = new System.Drawing.Size(367, 277);
+            this.lstSlots.Size = new System.Drawing.Size(367, 303);
             this.lstSlots.TabIndex = 2;
             // 
             // btnAdd
@@ -132,19 +105,14 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lstSlots);
-            this.Controls.Add(this.cboWeekday);
-            this.Controls.Add(this.tmeTima);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.Text = "Scheduler";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker tmeTima;
-        private System.Windows.Forms.ComboBox cboWeekday;
         private System.Windows.Forms.ListBox lstSlots;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;

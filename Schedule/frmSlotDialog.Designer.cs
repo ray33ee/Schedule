@@ -38,25 +38,26 @@
             this.cbxCH = new System.Windows.Forms.CheckBox();
             this.cbxWF = new System.Windows.Forms.CheckBox();
             this.cbxIH = new System.Windows.Forms.CheckBox();
+            this.cboWeekday = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tmeStart
             // 
-            this.tmeStart.Location = new System.Drawing.Point(67, 69);
+            this.tmeStart.Location = new System.Drawing.Point(68, 97);
             this.tmeStart.Name = "tmeStart";
             this.tmeStart.Size = new System.Drawing.Size(171, 20);
             this.tmeStart.TabIndex = 0;
             // 
             // tmeFinish
             // 
-            this.tmeFinish.Location = new System.Drawing.Point(67, 102);
+            this.tmeFinish.Location = new System.Drawing.Point(68, 130);
             this.tmeFinish.Name = "tmeFinish";
             this.tmeFinish.Size = new System.Drawing.Size(171, 20);
             this.tmeFinish.TabIndex = 1;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(44, 135);
+            this.btnOK.Location = new System.Drawing.Point(45, 163);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 3;
@@ -67,7 +68,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(126, 135);
+            this.btnCancel.Location = new System.Drawing.Point(127, 163);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -77,7 +78,7 @@
             // lblFinish
             // 
             this.lblFinish.AutoSize = true;
-            this.lblFinish.Location = new System.Drawing.Point(5, 102);
+            this.lblFinish.Location = new System.Drawing.Point(6, 130);
             this.lblFinish.Name = "lblFinish";
             this.lblFinish.Size = new System.Drawing.Size(56, 13);
             this.lblFinish.TabIndex = 6;
@@ -86,7 +87,7 @@
             // lblStart
             // 
             this.lblStart.AutoSize = true;
-            this.lblStart.Location = new System.Drawing.Point(5, 69);
+            this.lblStart.Location = new System.Drawing.Point(6, 97);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(58, 13);
             this.lblStart.TabIndex = 7;
@@ -95,7 +96,7 @@
             // cbxHW
             // 
             this.cbxHW.AutoSize = true;
-            this.cbxHW.Location = new System.Drawing.Point(26, 13);
+            this.cbxHW.Location = new System.Drawing.Point(27, 41);
             this.cbxHW.Name = "cbxHW";
             this.cbxHW.Size = new System.Drawing.Size(75, 17);
             this.cbxHW.TabIndex = 8;
@@ -105,7 +106,7 @@
             // cbxCH
             // 
             this.cbxCH.AutoSize = true;
-            this.cbxCH.Location = new System.Drawing.Point(119, 13);
+            this.cbxCH.Location = new System.Drawing.Point(120, 41);
             this.cbxCH.Name = "cbxCH";
             this.cbxCH.Size = new System.Drawing.Size(99, 17);
             this.cbxCH.TabIndex = 9;
@@ -115,7 +116,7 @@
             // cbxWF
             // 
             this.cbxWF.AutoSize = true;
-            this.cbxWF.Location = new System.Drawing.Point(26, 36);
+            this.cbxWF.Location = new System.Drawing.Point(27, 64);
             this.cbxWF.Name = "cbxWF";
             this.cbxWF.Size = new System.Drawing.Size(80, 17);
             this.cbxWF.TabIndex = 10;
@@ -125,18 +126,35 @@
             // cbxIH
             // 
             this.cbxIH.AutoSize = true;
-            this.cbxIH.Location = new System.Drawing.Point(119, 36);
+            this.cbxIH.Location = new System.Drawing.Point(120, 64);
             this.cbxIH.Name = "cbxIH";
             this.cbxIH.Size = new System.Drawing.Size(54, 17);
             this.cbxIH.TabIndex = 11;
             this.cbxIH.Text = "Inhibit";
             this.cbxIH.UseVisualStyleBackColor = true;
             // 
+            // cboWeekday
+            // 
+            this.cboWeekday.FormattingEnabled = true;
+            this.cboWeekday.Items.AddRange(new object[] {
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wedneday",
+            "Thursday",
+            "Friday",
+            "Saturday"});
+            this.cboWeekday.Location = new System.Drawing.Point(12, 14);
+            this.cboWeekday.Name = "cboWeekday";
+            this.cboWeekday.Size = new System.Drawing.Size(192, 21);
+            this.cboWeekday.TabIndex = 12;
+            // 
             // frmSlotDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 168);
+            this.ClientSize = new System.Drawing.Size(249, 205);
+            this.Controls.Add(this.cboWeekday);
             this.Controls.Add(this.cbxIH);
             this.Controls.Add(this.cbxWF);
             this.Controls.Add(this.cbxCH);
@@ -172,5 +190,6 @@
         private System.Windows.Forms.CheckBox cbxCH;
         private System.Windows.Forms.CheckBox cbxWF;
         private System.Windows.Forms.CheckBox cbxIH;
+        private System.Windows.Forms.ComboBox cboWeekday;
     }
 }

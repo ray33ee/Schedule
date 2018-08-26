@@ -6,7 +6,30 @@ using System.Threading.Tasks;
 
 namespace Schedule
 {
-    class Time
+    public class State
+    {
+        private char _value;
+
+        public char Value { get => _value; set => _value = value; }
+
+        public bool HW { get => (Value & 1) != 0; }
+
+        public bool CH { get => (Value & 2) != 0; }
+
+        public bool WF { get => (Value & 4) != 0; }
+
+        public bool IH { get => (Value & 8) != 0; }
+
+        public State() : this(0) { }
+
+        public State(int val) { Value = (char)val; }
+
+        public State(int hw, int ch, int wf, int ih) { Value = (char)(hw + (ch << 1) + (wf << 2) + (ih << 3)); }
+
+        public override string ToString() { return (HW ? "HW " : "") + (CH ? "CH " : "") + (WF ? "WIFI " : "") + (IH ? "IH " : ""); }
+    }
+
+    public class Time
     {
         private int _minute;
         private int _hour;
@@ -18,18 +41,19 @@ namespace Schedule
 
         public Time() : this(0) { }
         public Time(int time) { IntTime = time; }
+        public Time(int hour, int minute) { Minute = minute; Hour = hour; }
 
         public override string ToString() { return Convert.ToString(Hour) + ":" + Convert.ToString(Minute); }
     }
 
-    class Slot
+    public class Slot
     {
-        private MinuteState _state;
+        private State _state;
         private int _weekday;
         private Time _start;
         private Time _finish;
 
-        public MinuteState State { get => _state; set => _state = value; }
+        public State State { get => _state; set => _state = value; }
         public int Day { get => _weekday; set => _weekday = value; }
         public Time Start { get => _start; set => _start = value; }
         public Time Finish { get => _finish; set => _finish = value; }
@@ -42,32 +66,26 @@ namespace Schedule
                 {
                     case 0:
                         return "Sunday   ";
-                        break;
                     case 1:
                         return "Monday   ";
-                        break;
                     case 2:
                         return "Tuesday  ";
-                        break;
                     case 3:
                         return "Wednesday";
-                        break;
                     case 4:
                         return "Thursday ";
-                        break;
                     case 5:
                         return "Friday   ";
-                        break;
                     case 6:
                         return "Saturday ";
-                        break;
                     default:
                         return "INVALID DAY";
                 }
             }
         }
 
-        public Slot(int day, Time start, Time finish, MinuteState state) { State = state; Day = day; Start = start; Finish = finish; }
+        public Slot() : this(0, new Time(), new Time(1), new State()) { }
+        public Slot(int day, Time start, Time finish, State state) { State = state; Day = day; Start = start; Finish = finish; }
         
         public override string ToString() { return DayString + " " + Start.ToString() + " " + Finish.ToString() + " " + State.ToString(); }
     }

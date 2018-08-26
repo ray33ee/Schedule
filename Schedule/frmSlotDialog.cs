@@ -12,37 +12,18 @@ namespace Schedule
 {
     public partial class frmSlotDialog : Form
     {
-        private int _start;
-        private int _finish;
-        private MinuteState _state;
+        private Slot _slot;
 
-        public int Start
-        {
-            get => _start;
+        public Slot Slot { get => _slot; }
 
-        }
-
-        public int Finish
-        {
-            get => _finish;
-
-        }
-
-        public MinuteState State
-        {
-            get => _state;
-        }
-
-        public frmSlotDialog() : this(0, 1, new MinuteState())
+        public frmSlotDialog() : this(new Slot())
         {
             
         }
 
-        public frmSlotDialog(int start_time, int finish_time, MinuteState state) 
+        public frmSlotDialog(Slot slot) 
         {
-            this._start = start_time;
-            this._finish = finish_time;
-            this._state = state;
+            _slot = slot;
             InitializeComponent();
         }
 
@@ -59,34 +40,48 @@ namespace Schedule
 
             //Initialise pickers with start values
             DateTime zero = DateTime.Parse("0:0");
-            tmeStart.Value = zero.AddHours(_start / 60).AddMinutes(_start % 60);
-            tmeFinish.Value = zero.AddHours(_finish / 60).AddMinutes(_finish % 60);
+            tmeStart.Value = zero.AddHours(Slot.Start.Hour).AddMinutes(Slot.Start.Minute);
+            tmeFinish.Value = zero.AddHours(Slot.Finish.Hour).AddMinutes(Slot.Finish.Minute);
 
             //Initialise combo box with start values
-            cbxHW.Checked = _state.HW;
-            cbxCH.Checked = _state.CH;
-            cbxWF.Checked = _state.WF;
-            cbxIH.Checked = _state.IH;
+            cbxHW.Checked = Slot.State.HW;
+            cbxCH.Checked = Slot.State.CH;
+            cbxWF.Checked = Slot.State.WF;
+            cbxIH.Checked = Slot.State.IH;
+
+            cboWeekday.SelectedIndex = Slot.Day;
 
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             //Make sure entries are valid
-            int start = tmeStart.Value.TimeOfDay.Hours * 60 + tmeStart.Value.TimeOfDay.Minutes;
-            int finish = tmeFinish.Value.TimeOfDay.Hours * 60 + tmeFinish.Value.TimeOfDay.Minutes;
-
-            if (finish <= start)
+            Time start =  new Time(tmeStart.Value.TimeOfDay.Hours, tmeStart.Value.TimeOfDay.Minutes);
+            Time finish = new Time(tmeFinish.Value.TimeOfDay.Hours, tmeFinish.Value.TimeOfDay.Minutes);
+            
+            if (finish.IntTime <= start.IntTime)
             { 
                 MessageBox.Show("Invalid Slot - Start time must be before finish time.", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if (cboWeekday.SelectedIndex == -1)
+            {
+                MessageBox.Show("Invalid Slot - Invalid weekday.", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (cboWeekday.Text == "")
+            {
+                MessageBox.Show("Invalid Slot - Invalid weekday.", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             //Copy valid entries
-            _start = start;
-            _finish = finish;
+            _slot.Day = cboWeekday.SelectedIndex;
 
-            _state = new MinuteState(Convert.ToInt32(cbxHW.Checked), Convert.ToInt32(cbxCH.Checked), Convert.ToInt32(cbxWF.Checked), Convert.ToInt32(cbxIH.Checked));
+            _slot.Start = start;
+            _slot.Finish = finish;
+
+            _slot.State = new State(Convert.ToInt32(cbxHW.Checked), Convert.ToInt32(cbxCH.Checked), Convert.ToInt32(cbxWF.Checked), Convert.ToInt32(cbxIH.Checked));
 
             //Dialog OK
             DialogResult = DialogResult.OK;

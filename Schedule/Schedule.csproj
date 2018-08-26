@@ -74,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Slot.cs" />
-    <Compile Include="State.cs" />
     <Compile Include="frmSlotDialog.cs">
       <SubType>Form</SubType>
     </Compile>
