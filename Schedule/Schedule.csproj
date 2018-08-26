@@ -6,13 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{352B0F3B-D1F9-49AD-9F73-51D1072905F0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Schedule01</RootNamespace>
-    <AssemblyName>Schedule01</AssemblyName>
+    <RootNamespace>Schedule</RootNamespace>
+    <AssemblyName>Schedule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Will\source\repos\Schedule01\pub\</PublishUrl>
+    <PublishUrl>C:\Users\Will\source\repos\Schedule\pub\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -51,7 +51,7 @@
     <ManifestCertificateThumbprint>E3826F6DD858EB3F7F2BBAEC8A494F569160310F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Schedule01_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Schedule_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Slot.cs" />
     <Compile Include="State.cs" />
     <Compile Include="frmSlotDialog.cs">
       <SubType>Form</SubType>
@@ -112,7 +113,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Schedule01_TemporaryKey.pfx" />
+    <None Include="Schedule_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

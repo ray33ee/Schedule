@@ -1,4 +1,9 @@
-﻿Version 1.0.3
+﻿Version 1.0.4
+	- Project renamed from Schedule01 to Schedule
+	- Added Slot class and modified State class. Both classes override ToString() for use with list box widget.
+	- State bug fixed (the bit select algorithm was negating the result. i.e. (Value & 1) == 0 was changed to (Value & 1) != 0)
+
+Version 1.0.3
 	- State changed to MinuteState and dialog combo changed to check boxes to accomodate any permutation of states
 	- Basic parse skeleton implemented
 

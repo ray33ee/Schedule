@@ -33,7 +33,7 @@ namespace Schedule
             get => _state;
         }
 
-        public frmSlotDialog() : this(0, 1, new MinuteState('\0'))
+        public frmSlotDialog() : this(0, 1, new MinuteState())
         {
             
         }
