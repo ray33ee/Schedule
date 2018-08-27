@@ -46,7 +46,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(71, 321);
+            this.btnAdd.Location = new System.Drawing.Point(77, 321);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 3;
@@ -56,7 +56,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(152, 321);
+            this.btnEdit.Location = new System.Drawing.Point(158, 321);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 4;
@@ -66,7 +66,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(233, 320);
+            this.btnDelete.Location = new System.Drawing.Point(239, 320);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 5;
@@ -76,7 +76,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(112, 350);
+            this.btnSave.Location = new System.Drawing.Point(118, 350);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -86,7 +86,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(193, 350);
+            this.btnOpen.Location = new System.Drawing.Point(199, 350);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 7;
@@ -98,13 +98,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 384);
+            this.ClientSize = new System.Drawing.Size(392, 384);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lstSlots);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(408, 422);
+            this.MinimumSize = new System.Drawing.Size(408, 422);
             this.Name = "frmMain";
             this.Text = "Scheduler";
             this.Load += new System.EventHandler(this.frmMain_Load);

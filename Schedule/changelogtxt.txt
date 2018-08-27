@@ -1,4 +1,9 @@
-﻿Version 1.0.5
+﻿Version 1.0.6
+	- User must now select at least one mode in dialog
+	- Time.ToString now displays leading zero for minute and hour
+	- lstSlots will no longer display slots with no mode (that is any slot such that Slot.State == 0)
+
+Version 1.0.5
 	- Weekday choice moved from main form to dialog
 	- Dialog now contains a 'Slot' class 
 	- Edit, delete and add buttons complete

@@ -59,6 +59,11 @@ namespace Schedule
             Time start =  new Time(tmeStart.Value.TimeOfDay.Hours, tmeStart.Value.TimeOfDay.Minutes);
             Time finish = new Time(tmeFinish.Value.TimeOfDay.Hours, tmeFinish.Value.TimeOfDay.Minutes);
             
+            if (!(cbxHW.Checked || cbxCH.Checked || cbxWF.Checked || cbxIH.Checked))
+            {
+                MessageBox.Show("Invalid Slot - Please select at least one mode.", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (finish.IntTime <= start.IntTime)
             { 
                 MessageBox.Show("Invalid Slot - Start time must be before finish time.", "Invalid Slot", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

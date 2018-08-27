@@ -109,7 +109,9 @@ namespace Schedule
                 {
                     if (_array[7 * i + day].Value != _array[(i-1)*7+day].Value)
                     {
-                        lstSlots.Items.Add(new Slot(day, new Time(ind), new Time(i), _array[7 * ind + day]));
+                        State found = _array[7 * ind + day];
+                        if (found.Value != 0)
+                            lstSlots.Items.Add(new Slot(day, new Time(ind), new Time(i), found));
                         ind = i;
                     }
                 }

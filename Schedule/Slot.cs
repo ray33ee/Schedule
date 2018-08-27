@@ -43,7 +43,7 @@ namespace Schedule
         public Time(int time) { IntTime = time; }
         public Time(int hour, int minute) { Minute = minute; Hour = hour; }
 
-        public override string ToString() { return Convert.ToString(Hour) + ":" + Convert.ToString(Minute); }
+        public override string ToString() { return (Hour < 10 ? "0" : "") + Convert.ToString(Hour) + ":" + (Minute < 10 ? "0" : "") + Convert.ToString(Minute); }
     }
 
     public class Slot
@@ -84,7 +84,7 @@ namespace Schedule
             }
         }
 
-        public Slot() : this(0, new Time(), new Time(1), new State()) { }
+        public Slot() : this(0, new Time(), new Time(), new State()) { }
         public Slot(int day, Time start, Time finish, State state) { State = state; Day = day; Start = start; Finish = finish; }
         
         public override string ToString() { return DayString + " " + Start.ToString() + " " + Finish.ToString() + " " + State.ToString(); }
