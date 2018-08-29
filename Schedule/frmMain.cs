@@ -15,7 +15,7 @@ namespace Schedule
     {
         private const int MINUTES_PER_DAY = 1500; //The number of minutes per day, rounded to the nearest 1500. Don't ask...
         private const int MINUTES_PER_WEEK = MINUTES_PER_DAY * 7;
-        private const string FILENAME = "schedule"; //Path to the schedule file
+        private const string FILENAME = "schedule.bin"; //Path to the schedule file
         
         private State[] _array;
 
@@ -51,20 +51,27 @@ namespace Schedule
 
             Slot selectedSlot = (Slot)lstSlots.SelectedItem;
 
-            frmSlotDialog editDialog = new frmSlotDialog(selectedSlot);
+            frmSlotDialog editDialog = new frmSlotDialog(new Slot((Slot)lstSlots.SelectedItem));
             editDialog.ShowDialog();
 
+
             if (editDialog.DialogResult == DialogResult.OK)
+            {
+                deleteSlot(selectedSlot);
                 addSlot(editDialog.Slot);
-            else 
-                addSlot(selectedSlot);
+            }
 
             parseArray();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteSlot();
+            int index = lstSlots.SelectedIndex;
+
+            if (index == -1)
+                return;
+
+            deleteSlot((Slot)lstSlots.SelectedItem);
             parseArray();
         }
 
@@ -78,20 +85,30 @@ namespace Schedule
             loadArray();
         }
 
-        private void addSlot(Slot add)
+        private void btnCopy_Click(object sender, EventArgs e)
         {
-            for (int i = add.Start.IntTime; i < add.Finish.IntTime; ++i)
-                _array[7 * i + add.Day].Value = add.State.Value;
-        }
-
-        private void deleteSlot()
-        {
-            //Make sure user has selected an item
             if (lstSlots.SelectedIndex == -1)
                 return;
 
-            //Get Slot to be deleted
-            Slot del = (Slot)lstSlots.SelectedItem;
+            //Create dialog object and display modal dialog
+            frmSlotDialog cpyDialog = new frmSlotDialog((Slot)lstSlots.SelectedItem);
+            cpyDialog.ShowDialog();
+
+            if (cpyDialog.DialogResult == DialogResult.OK)
+                addSlot(cpyDialog.Slot);
+
+            parseArray();
+        }
+
+        private void addSlot(Slot add)
+        {
+            for (int i = add.Start.IntTime; i < add.Finish.IntTime; ++i)
+                _array[7 * i + add.Day].Value = (char)(_array[7 * i + add.Day].Value | add.State.Value);
+        }
+
+        private void deleteSlot(Slot del)
+        {
+            Console.WriteLine("Delete index: " + lstSlots.SelectedIndex);
 
             //Erase slot in array
             for (int i = del.Start.IntTime; i < del.Finish.IntTime; ++i)

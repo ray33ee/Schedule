@@ -140,7 +140,7 @@
             "Sunday",
             "Monday",
             "Tuesday",
-            "Wedneday",
+            "Wednesday",
             "Thursday",
             "Friday",
             "Saturday"});

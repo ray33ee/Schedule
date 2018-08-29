@@ -2,6 +2,9 @@
 	- User must now select at least one mode in dialog
 	- Time.ToString now displays leading zero for minute and hour
 	- lstSlots will no longer display slots with no mode (that is any slot such that Slot.State == 0)
+	- User may now enter 00:00 as final time, representing midnight
+	- Added copy button
+	- Editing bug fixed
 
 Version 1.0.5
 	- Weekday choice moved from main form to dialog

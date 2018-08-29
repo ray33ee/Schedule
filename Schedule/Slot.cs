@@ -86,7 +86,9 @@ namespace Schedule
 
         public Slot() : this(0, new Time(), new Time(), new State()) { }
         public Slot(int day, Time start, Time finish, State state) { State = state; Day = day; Start = start; Finish = finish; }
-        
+
+        public Slot(Slot s) { State = s.State; Start = s.Start; Finish = s.Finish; Day = s.Day; }
+
         public override string ToString() { return DayString + " " + Start.ToString() + " " + Finish.ToString() + " " + State.ToString(); }
     }
 }

@@ -58,6 +58,10 @@ namespace Schedule
             //Make sure entries are valid
             Time start =  new Time(tmeStart.Value.TimeOfDay.Hours, tmeStart.Value.TimeOfDay.Minutes);
             Time finish = new Time(tmeFinish.Value.TimeOfDay.Hours, tmeFinish.Value.TimeOfDay.Minutes);
+
+            //Time 00:00 in the finish time will be at midnight, allowing overflow to next day
+            if (finish.IntTime == 0)
+                finish.IntTime = 24 * 60;
             
             if (!(cbxHW.Checked || cbxCH.Checked || cbxWF.Checked || cbxIH.Checked))
             {
